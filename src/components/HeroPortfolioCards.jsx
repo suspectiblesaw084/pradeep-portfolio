@@ -1,36 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-
-/**
- * CardImage - Renders a portfolio work preview image.
- * If the image path is missing or fails to load, it displays a premium dark gradient
- * placeholder with a structural grid layout, preventing broken image icons.
- */
-function CardImage({ src, alt }) {
-  const [hasError, setHasError] = useState(false);
-
-  return (
-    <div className="relative w-full h-full bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 overflow-hidden flex items-center justify-center">
-      {/* Soft geometric dot grid pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#1f1f1f_1px,transparent_1px)] [background-size:16px_16px] opacity-35" />
-      
-      {!hasError && src ? (
-        <img 
-          // Replace this with your actual portfolio image
-          src={src} 
-          alt={alt}
-          onError={() => setHasError(true)}
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-        />
-      ) : (
-        <div className="flex flex-col items-center justify-center gap-1.5 p-4 text-center select-none text-neutral-600 font-mono text-[9px] uppercase tracking-[0.2em]">
-          <span>[ Preview Archive ]</span>
-        </div>
-      )}
-    </div>
-  );
-}
+import PlaceholderVisual from './PlaceholderVisual';
 
 /**
  * HeroPortfolioCards - A premium interactive stack of floating portfolio
@@ -93,11 +64,9 @@ export default function HeroPortfolioCards() {
     {
       id: 1,
       // Change category label here
-      category: "VISUAL / 01",
+      category: "PLACEHOLDER / 01",
       // Change card title here
-      title: "Selected Works",
-      // Replace this with your actual portfolio image
-      image: "/images/work-01.jpg",
+      title: "Project Preview",
       className: "w-full lg:w-[285px] lg:h-[340px] lg:absolute lg:left-[18%] lg:top-[20%] z-30 lg:rotate-[1deg]",
       depth: 12, // parallax translation scale
       tilt: true // allows 3D card tilt
@@ -105,11 +74,9 @@ export default function HeroPortfolioCards() {
     {
       id: 2,
       // Change category label here
-      category: "BRAND / 02",
+      category: "PLACEHOLDER / 02",
       // Change card title here
-      title: "Identity Systems",
-      // Replace this with your actual portfolio image
-      image: "/images/work-02.jpg",
+      title: "Brand Visual",
       className: "w-full lg:w-[200px] lg:h-[240px] lg:absolute lg:right-[8%] lg:top-[8%] z-10 lg:rotate-[3deg]",
       depth: 6,
       tilt: false
@@ -117,11 +84,9 @@ export default function HeroPortfolioCards() {
     {
       id: 3,
       // Change category label here
-      category: "3D / 03",
+      category: "PLACEHOLDER / 03",
       // Change card title here
-      title: "Product Renders",
-      // Replace this with your actual portfolio image
-      image: "/images/work-03.jpg",
+      title: "Render Frame",
       className: "w-full lg:w-[195px] lg:h-[235px] lg:absolute lg:right-[12%] lg:bottom-[8%] z-15 lg:rotate-[-2deg]",
       depth: 8,
       tilt: false
@@ -129,11 +94,9 @@ export default function HeroPortfolioCards() {
     {
       id: 4,
       // Change category label here
-      category: "SOCIAL / 04",
+      category: "PLACEHOLDER / 04",
       // Change card title here
-      title: "Campaign Designs",
-      // Replace this with your actual portfolio image
-      image: "/images/work-04.jpg",
+      title: "Campaign Layout",
       className: "w-full lg:w-[185px] lg:h-[225px] lg:absolute lg:left-[2%] lg:bottom-[12%] z-20 lg:rotate-[-4deg]",
       depth: 10,
       tilt: false
@@ -141,11 +104,9 @@ export default function HeroPortfolioCards() {
     {
       id: 5,
       // Change category label here
-      category: "MOTION / UI / POSTERS",
+      category: "PLACEHOLDER / UPDATE SOON",
       // Change card title here
       title: "Archive '26",
-      // Replace this with your actual portfolio image
-      image: "",
       className: "w-full lg:w-[150px] lg:h-[85px] lg:absolute lg:left-[10%] lg:top-[6%] z-40 lg:rotate-[4deg]",
       depth: 15,
       tilt: false,
@@ -265,7 +226,7 @@ export default function HeroPortfolioCards() {
 
                     {/* Image Area */}
                     <div className="w-full flex-grow rounded-lg overflow-hidden bg-neutral-900/60 border border-neutral-800/20 mb-3 select-none aspect-video lg:aspect-auto">
-                      <CardImage src={card.image} alt={card.title} />
+                      <PlaceholderVisual variant={card.id} index={`0${card.id}`} label="PLACEHOLDER VISUAL" />
                     </div>
 
                     {/* Footer */}

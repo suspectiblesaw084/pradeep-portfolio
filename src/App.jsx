@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -9,8 +10,25 @@ import Process from './components/Process';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import BrandbooksPage from './components/BrandbooksPage';
+
+function HomePage() {
+  return (
+    <main>
+      <Hero />
+      <SelectedWorks />
+      <FeaturedCaseStudies />
+      <Skills />
+      <Process />
+      <About />
+      <Contact />
+    </main>
+  );
+}
 
 export default function App() {
+  const location = useLocation();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -27,29 +45,12 @@ export default function App() {
       {/* Navigation Header */}
       <Navbar />
 
-      {/* Main Single Page Content */}
-      <main>
-        {/* Hero Area */}
-        <Hero />
-
-        {/* Selected Works (Interactive lists with hover previews) */}
-        <SelectedWorks />
-
-        {/* Featured Case Studies (Asymmetric grid inside SpotlightCards) */}
-        <FeaturedCaseStudies />
-
-        {/* Tools & Capabilities */}
-        <Skills />
-
-        {/* Process Steps */}
-        <Process />
-
-        {/* About Profile Info */}
-        <About />
-
-        {/* Contact Block */}
-        <Contact />
-      </main>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/brandbooks" element={<BrandbooksPage />} />
+        </Routes>
+      </AnimatePresence>
 
       {/* Footer copyright */}
       <Footer />

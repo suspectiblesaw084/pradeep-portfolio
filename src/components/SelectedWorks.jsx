@@ -1,43 +1,44 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import PlaceholderVisual from './PlaceholderVisual';
 
 const projects = [
   {
     num: "01",
-    title: "Brand Identity & Logo Systems",
-    desc: "Visual systems, logo directions, and premium brand language for modern identities.",
-    image: "/images/abhive_studios.png"
+    // Replace this placeholder title with your real project title
+    title: "Placeholder Brand Identity",
+    desc: "Sample visual direction for brand identity, logo systems, and premium visual language.",
   },
   {
     num: "02",
-    title: "Social Media Creatives",
-    desc: "Scroll-stopping posts, thumbnails, campaign visuals, and marketing assets.",
-    image: "/images/social_media_archive.png"
+    // Replace this placeholder title with your real project title
+    title: "Placeholder Social Campaign",
+    desc: "Sample layout for social posts, thumbnails, campaign visuals, and marketing creatives.",
   },
   {
     num: "03",
-    title: "Product & E-commerce Visuals",
-    desc: "Clean commercial visuals, product compositions, and catalog-ready creatives.",
-    image: "/images/product_visuals.png"
+    // Replace this placeholder title with your real project title
+    title: "Placeholder Product Visual",
+    desc: "Sample product composition, e-commerce creative, and commercial visual direction.",
   },
   {
     num: "04",
-    title: "3D-Inspired Visual Direction",
-    desc: "Cinematic compositions, product-style scenes, and Blender-based visual experiments.",
-    image: "/images/product_visuals.png"
+    // Replace this placeholder title with your real project title
+    title: "Placeholder 3D Render",
+    desc: "Sample 3D-inspired visual scene, product render, or Blender-style composition.",
   },
   {
     num: "05",
-    title: "Motion Graphics & Video Assets",
-    desc: "Animated layouts, title cards, reels, promo visuals, and video design elements.",
-    image: "/images/abhive_studios.png"
+    // Replace this placeholder title with your real project title
+    title: "Placeholder Motion Frame",
+    desc: "Sample animated title card, reel frame, promo visual, or motion design still.",
   },
   {
     num: "06",
-    title: "UI Layout & Web Concepts",
-    desc: "Clean digital layouts, landing page concepts, and portfolio-style web interfaces.",
-    image: "/images/social_media_archive.png"
+    // Replace this placeholder title with your real project title
+    title: "Placeholder UI Concept",
+    desc: "Sample digital layout, landing page concept, or portfolio-style interface design.",
   }
 ];
 
@@ -117,12 +118,8 @@ export default function SelectedWorks() {
               {/* Right Arrow / Mobile Image Preview */}
               <div className="flex items-center justify-between mt-4 md:mt-0 z-10">
                 {/* Mobile static image view (Hidden on desktop) */}
-                <div className="md:hidden w-full max-h-40 overflow-hidden rounded border border-neutral-900 mb-2">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover grayscale opacity-70"
-                  />
+                <div className="md:hidden w-full h-40 overflow-hidden rounded border border-neutral-900 mb-2">
+                  <PlaceholderVisual variant={(index % 4) + 1} index={project.num} label="PROJECT PREVIEW" />
                 </div>
                 
                 <span className="text-neutral-600 group-hover:text-white transition-all duration-300 transform group-hover:rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 hidden md:block">
@@ -149,11 +146,7 @@ export default function SelectedWorks() {
               }}
               className="hidden md:block w-72 h-48 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-neutral-850 z-30"
             >
-              <img
-                src={projects[hoveredIndex].image}
-                alt="Project Preview"
-                className="w-full h-full object-cover filter brightness-90 saturate-75"
-              />
+              <PlaceholderVisual variant={(hoveredIndex % 4) + 1} index={projects[hoveredIndex].num} label="PREVIEW WORK" className="filter brightness-90 saturate-75" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                 <span className="text-[9px] tracking-widest text-white/80 font-mono uppercase bg-black/80 px-2.5 py-1 rounded border border-white/5 backdrop-blur-sm">
                   Preview Work

@@ -1,34 +1,35 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import SpotlightCard from './SpotlightCard';
+import PlaceholderVisual from './PlaceholderVisual';
 
 const caseStudies = [
   {
-    title: "BharatBrew Coffee Branding",
-    category: "BRAND IDENTITY / PACKAGING",
-    desc: "A premium coffee brand direction with earthy tones, packaging mood, and a clean visual system.",
-    image: "/images/bharatbrew_branding.png",
+    // Replace this placeholder title with your real project title
+    title: "Placeholder Branding Project",
+    category: "BRAND IDENTITY / PLACEHOLDER",
+    desc: "A temporary brand identity preview card. Replace this with a real project once the final case study is ready.",
     aspect: "aspect-[4/3] md:aspect-[4/5]", // Tall editorial aspect
   },
   {
-    title: "ABHIVE Studios Identity",
-    category: "CINEMATIC BRAND IDENTITY",
-    desc: "A film studio identity concept built around cinematic symbols, strong contrast, and visual storytelling.",
-    image: "/images/abhive_studios.png",
+    // Replace this placeholder title with your real project title
+    title: "Placeholder Studio Identity",
+    category: "VISUAL IDENTITY / PLACEHOLDER",
+    desc: "A temporary visual identity preview card. Replace this with an actual logo or brand system project later.",
     aspect: "aspect-[4/3]", // Wide aspect
   },
   {
-    title: "Product Visual Experiments",
-    category: "PRODUCT / COMMERCIAL VISUALS",
-    desc: "High-end product compositions, realistic lighting, and premium e-commerce-style presentation.",
-    image: "/images/product_visuals.png",
+    // Replace this placeholder title with your real project title
+    title: "Placeholder Product Visual",
+    category: "PRODUCT VISUAL / PLACEHOLDER",
+    desc: "A temporary product visual preview card. Replace this with a real product render or commercial visual later.",
     aspect: "aspect-[4/3]",
   },
   {
-    title: "Social Media Design Archive",
-    category: "SOCIAL / CAMPAIGN DESIGN",
-    desc: "Posters, thumbnails, launch creatives, campaign layouts, and marketing visuals created for digital platforms.",
-    image: "/images/social_media_archive.png",
+    // Replace this placeholder title with your real project title
+    title: "Placeholder Social Archive",
+    category: "SOCIAL DESIGN / PLACEHOLDER",
+    desc: "A temporary social media design preview card. Replace this with real posters, thumbnails, or campaign designs later.",
     aspect: "aspect-[4/3] md:aspect-[4/5]",
   }
 ];
@@ -76,11 +77,11 @@ export default function FeaturedCaseStudies() {
                     {/* Shadow overlay gradient for maximum text readability and depth */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent group-hover:from-black/20 transition-all duration-500 z-10" />
 
-                    {/* Image Scales on Hover */}
-                    <img
-                      src={study.image}
-                      alt={study.title}
-                      className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-700 ease-out"
+                    {/* Abstract Placeholder Visual */}
+                    <PlaceholderVisual 
+                      variant={(index % 4) + 1} 
+                      index={`0${index + 1}`} 
+                      label="CASE STUDY" 
                     />
                     
                     {/* Floating Action Badge - Slides and fades in */}

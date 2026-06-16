@@ -1,6 +1,16 @@
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
 
+// Replace these with your actual social profile URLs
+// Replace this placeholder link with your real Instagram URL
+const INSTAGRAM_URL = "https://www.instagram.com/pradeeep.04?igsh=MXU1MWViNTExcWd5cA==";
+
+// Replace this placeholder link with your real LinkedIn URL
+const LINKEDIN_URL = "https://www.linkedin.com/in/pradeep-v-172099342";
+
+// Replace this placeholder email with your real email address
+const EMAIL_ADDRESS = "pradeepvenu64@gmail.com";
+
 export default function Contact() {
   return (
     <section id="contact" className="py-24 md:py-36 border-b border-neutral-900 bg-[#050505] relative overflow-hidden">
@@ -38,7 +48,7 @@ export default function Contact() {
               <motion.a
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                href="mailto:pradeepvenu64@gmail.com"
+                href={`mailto:${EMAIL_ADDRESS}`}
                 className="inline-flex items-center gap-2.5 px-6 py-4 bg-white text-black font-semibold rounded-full text-xs uppercase tracking-widest hover:bg-neutral-200 transition-colors duration-300 font-mono"
               >
                 Send Email
@@ -48,7 +58,7 @@ export default function Contact() {
               <motion.a
                 whileHover={{ scale: 1.03, borderColor: '#ffffff' }}
                 whileTap={{ scale: 0.98 }}
-                href="https://linkedin.com" // Placeholder for real LinkedIn
+                href={LINKEDIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-4 border border-neutral-800 rounded-full text-xs uppercase tracking-widest text-neutral-400 hover:text-white transition-colors duration-300 bg-neutral-950/20 font-mono"
@@ -65,10 +75,10 @@ export default function Contact() {
             <div className="pb-6 border-b border-neutral-900">
               <span className="text-neutral-600 block mb-2">// Direct Mail</span>
               <a 
-                href="mailto:pradeepvenu64@gmail.com"
+                href={`mailto:${EMAIL_ADDRESS}`}
                 className="text-sm text-white font-medium hover:text-neutral-400 transition-colors duration-300 normal-case"
               >
-                pradeepvenu64@gmail.com
+                {EMAIL_ADDRESS}
               </a>
             </div>
 
@@ -76,7 +86,7 @@ export default function Contact() {
               <span className="text-neutral-600 block mb-3">// Social Channels</span>
               <div className="flex flex-col gap-3">
                 <a 
-                  href="https://instagram.com" // Placeholder for user's Instagram
+                  href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-neutral-400 transition-colors duration-300 flex items-center justify-between group"
@@ -89,7 +99,7 @@ export default function Contact() {
                 </a>
 
                 <a 
-                  href="https://linkedin.com" // Placeholder for user's LinkedIn
+                  href={LINKEDIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-neutral-400 transition-colors duration-300 flex items-center justify-between group animate-none"
