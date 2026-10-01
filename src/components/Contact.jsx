@@ -1,127 +1,138 @@
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
+import { Instagram, Linkedin, ArrowUpRight } from 'lucide-react';
+import { useSoundEffects } from '../hooks/useSoundEffects';
 
-// Replace these with your actual social profile URLs
-// Replace this placeholder link with your real Instagram URL
 const INSTAGRAM_URL = "https://www.instagram.com/pradeeep.04?igsh=MXU1MWViNTExcWd5cA==";
-
-// Replace this placeholder link with your real LinkedIn URL
 const LINKEDIN_URL = "https://www.linkedin.com/in/pradeep-v-172099342";
-
-// Replace this placeholder email with your real email address
 const EMAIL_ADDRESS = "pradeepvenu64@gmail.com";
 
 export default function Contact() {
+  const { playClick, playHover } = useSoundEffects();
+
   return (
-    <section id="contact" className="py-24 md:py-36 border-b border-neutral-900 bg-[#050505] relative overflow-hidden">
-      {/* Background glowing light gradient */}
-      <div className="absolute -bottom-20 right-10 w-[30vw] h-[30vw] bg-white/[0.01] rounded-full blur-[90px] pointer-events-none" />
-      
+    <section id="contact" className="py-24 md:py-36 border-t-2 border-b-2 border-retro-border bg-retro-bg relative overflow-hidden">
+      {/* Background Dotted Grid */}
+      <div className="absolute inset-0 bg-[radial-gradient(#1A1A1A_2px,transparent_2px)] [background-size:32px_32px] opacity-10 pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
-        {/* Contact Layout Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Side: Call to Action Headers */}
-          <div className="lg:col-span-8 flex flex-col items-start">
-            <span className="text-xs uppercase tracking-widest text-neutral-500 font-mono block mb-4">
-              GET IN TOUCH
-            </span>
-            <motion.h2 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="section-title text-4xl sm:text-5xl md:text-6xl lg:text-7.5xl font-bold text-white mb-8"
-            >
-              Have a visual idea? <br />
-              Let’s make it look <br />
-              <span className="text-neutral-500 font-normal italic font-display font-light">premium.</span>
-            </motion.h2>
-            
-            <p className="text-neutral-400 font-light text-base md:text-lg max-w-xl mb-12 leading-relaxed">
-              Available for branding, social media creatives, product visuals, motion graphics, digital design, and visual direction projects.
-            </p>
+          <div className="lg:col-span-8 flex flex-col items-start bg-white border-4 border-retro-border shadow-retro p-8 md:p-12 relative">
+            <div className="absolute -top-1 -left-1 w-3 h-3 bg-retro-border" />
+            <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-retro-border" />
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-retro-border" />
+            <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-retro-border" />
+
+            <div className="mb-12">
+              <div className="inline-flex items-center gap-2 px-2 py-1 bg-retro-yellow border-2 border-retro-border mb-4 shadow-retro-sm ui-scratch -rotate-2">
+                <span className="text-[10px] uppercase tracking-widest text-retro-text font-mono font-bold">
+                  CONTINUE?_ 9
+                </span>
+              </div>
+              <h2 className="section-title text-4xl md:text-6xl font-display font-bold text-retro-text uppercase leading-tight mb-6 relative">
+                <span className="relative z-10">Have a visual idea? <br/> Let’s build something memorable.</span>
+                <span className="absolute top-1 left-1 text-retro-text/10 z-0 select-none">Have a visual idea? <br/> Let’s build something memorable.</span>
+              </h2>
+              <p className="text-retro-text/80 font-medium max-w-xl text-lg font-sans">
+                Available for branding, social media creatives, product visuals, motion graphics, digital design, and visual direction projects.
+              </p>
+            </div>
 
             {/* Buttons */}
             <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-              <motion.a
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
+              <a 
                 href={`mailto:${EMAIL_ADDRESS}`}
-                className="inline-flex items-center gap-2.5 px-6 py-4 bg-white text-black font-semibold rounded-full text-xs uppercase tracking-widest hover:bg-neutral-200 transition-colors duration-300 font-mono"
+                onClick={playClick}
+                onMouseEnter={playHover}
+                className="retro-btn-primary flex items-center gap-2 cursor-none relative"
               >
+                <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-white" />
                 Send Email
-                <Mail size={14} />
-              </motion.a>
-
-              <motion.a
-                whileHover={{ scale: 1.03, borderColor: '#ffffff' }}
-                whileTap={{ scale: 0.98 }}
+                <ArrowUpRight size={16} />
+              </a>
+              <a 
                 href={LINKEDIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-4 border border-neutral-800 rounded-full text-xs uppercase tracking-widest text-neutral-400 hover:text-white transition-colors duration-300 bg-neutral-950/20 font-mono"
+                onClick={playClick}
+                onMouseEnter={playHover}
+                className="retro-btn flex items-center gap-2 cursor-none bg-retro-bg hover:bg-retro-blue hover:text-white transition-colors relative"
               >
+                <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-retro-border" />
                 View LinkedIn
-                <Linkedin size={14} />
-              </motion.a>
+                <ArrowUpRight size={16} />
+              </a>
             </div>
           </div>
 
-          {/* Right Side: Social links & Email Details */}
-          <div className="lg:col-span-4 flex flex-col gap-8 lg:mt-16 font-mono text-xs tracking-widest uppercase">
-            
-            <div className="pb-6 border-b border-neutral-900">
-              <span className="text-neutral-600 block mb-2">// Direct Mail</span>
-              <a 
-                href={`mailto:${EMAIL_ADDRESS}`}
-                className="text-sm text-white font-medium hover:text-neutral-400 transition-colors duration-300 normal-case"
-              >
-                {EMAIL_ADDRESS}
-              </a>
+          {/* Right Side: Communication Terminal */}
+          <div className="lg:col-span-4 flex flex-col border-4 border-retro-border bg-[#1A1A1A] shadow-retro relative">
+            <div className="absolute -top-1 -left-1 w-3 h-3 bg-retro-border" />
+            <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-retro-border" />
+
+            <div className="bg-retro-border text-white px-3 py-1.5 flex justify-between items-center font-mono text-xs uppercase tracking-widest select-none border-b-2 border-retro-border">
+              <span>network_links.exe</span>
+              <span>_ O X</span>
             </div>
-
-            <div className="pb-6 border-b border-neutral-900">
-              <span className="text-neutral-600 block mb-3">// Social Channels</span>
-              <div className="flex flex-col gap-3">
+            
+            <div className="p-6 font-mono text-xs tracking-widest uppercase flex flex-col gap-6 text-retro-green">
+              <div>
+                <span className="opacity-50 block mb-2">{'>'} PING EMAIL</span>
                 <a 
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 flex items-center justify-between group"
+                  href={`mailto:${EMAIL_ADDRESS}`}
+                  onClick={playClick}
+                  onMouseEnter={playHover}
+                  className="font-bold text-white hover:text-retro-yellow transition-colors duration-300 normal-case cursor-none inline-block border-b border-transparent hover:border-retro-yellow"
                 >
-                  <span className="flex items-center gap-2">
-                    <Instagram size={14} className="text-neutral-500" />
-                    Instagram
-                  </span>
-                  <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
-
-                <a 
-                  href={LINKEDIN_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-neutral-400 transition-colors duration-300 flex items-center justify-between group animate-none"
-                >
-                  <span className="flex items-center gap-2">
-                    <Linkedin size={14} className="text-neutral-500" />
-                    LinkedIn
-                  </span>
-                  <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {EMAIL_ADDRESS}
                 </a>
               </div>
-            </div>
 
-            <div>
-              <span className="text-neutral-600 block mb-2">// Availability</span>
-              <span className="text-white font-medium">Open to opportunities // 2026</span>
-            </div>
+              <div>
+                <span className="opacity-50 block mb-2">{'>'} PING SOCIAL</span>
+                <div className="flex flex-col gap-4 mt-2">
+                  <a 
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={playClick}
+                    onMouseEnter={playHover}
+                    className="font-bold text-white hover:text-retro-yellow transition-colors duration-300 flex items-center justify-between group cursor-none"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Instagram size={14} className="opacity-50 group-hover:opacity-100" />
+                      Instagram
+                    </span>
+                    <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </a>
 
+                  <a 
+                    href={LINKEDIN_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={playClick}
+                    onMouseEnter={playHover}
+                    className="font-bold text-white hover:text-retro-yellow transition-colors duration-300 flex items-center justify-between group cursor-none"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Linkedin size={14} className="opacity-50 group-hover:opacity-100" />
+                      LinkedIn
+                    </span>
+                    <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </a>
+                </div>
+              </div>
+              
+              <div className="mt-4 flex items-center gap-2 opacity-50">
+                <span>{'>'} INSERT COIN</span>
+                <span className="w-2 h-3 bg-retro-green animate-blink" />
+              </div>
+            </div>
           </div>
 
         </div>
-
       </div>
     </section>
   );

@@ -1,93 +1,97 @@
 import { motion } from 'framer-motion';
 
-// Replace this PlaceholderVisual component with your real project image tags 
-// (e.g. <img src="/images/my-project.jpg" alt="Project Name" />) once your actual work is ready.
-export default function PlaceholderVisual({ variant = 1, label = "PLACEHOLDER VISUAL", index = "01", className = "" }) {
-  // Normalize variant to be between 1 and 4
+export default function PlaceholderVisual({ variant = 1, label = "VISUAL", index = "01", className = "" }) {
   const v = ((variant - 1) % 4) + 1;
 
   return (
-    <div className={`w-full h-full relative bg-[#080808] overflow-hidden flex items-center justify-center border border-neutral-900/50 ${className}`}>
+    <div className={`w-full h-full relative bg-white overflow-hidden flex items-center justify-center font-mono ${className}`}>
       
-      {/* Variant 1: Thin dot grid + small center circle */}
+      {/* Background Dot Grid */}
+      <div className="absolute inset-0 bg-[radial-gradient(#1A1A1A_1px,transparent_1px)] [background-size:12px_12px] opacity-[0.15]" />
+
+      {/* Variant 1: Folder/File Icon */}
       {v === 1 && (
-        <>
-          <div className="absolute inset-0 bg-[radial-gradient(#262626_1px,transparent_1px)] [background-size:16px_16px] opacity-40" />
-          <motion.div 
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="w-16 h-16 rounded-full border border-neutral-800 flex items-center justify-center relative z-10"
-          >
-            <div className="w-2 h-2 rounded-full bg-neutral-700" />
-          </motion.div>
-        </>
-      )}
-
-      {/* Variant 2: Diagonal pinstripes + minimal rectangle */}
-      {v === 2 && (
-        <>
-          <div 
-            className="absolute inset-0 opacity-20"
-            style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, #262626 10px, #262626 11px)' }}
-          />
-          <motion.div 
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="w-24 h-32 border border-neutral-700 bg-black/50 backdrop-blur-sm relative z-10"
-          />
-        </>
-      )}
-
-      {/* Variant 3: Soft radial glow + corner brackets */}
-      {v === 3 && (
-        <>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800/40 via-black to-black opacity-60" />
-          
-          {/* Corner brackets */}
-          <div className="absolute top-6 left-6 w-4 h-4 border-t border-l border-neutral-600" />
-          <div className="absolute top-6 right-6 w-4 h-4 border-t border-r border-neutral-600" />
-          <div className="absolute bottom-6 left-6 w-4 h-4 border-b border-l border-neutral-600" />
-          <div className="absolute bottom-6 right-6 w-4 h-4 border-b border-r border-neutral-600" />
-          
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="w-px h-16 bg-gradient-to-b from-transparent via-neutral-500 to-transparent relative z-10"
-          />
-        </>
-      )}
-
-      {/* Variant 4: Frosted overlapping cards */}
-      {v === 4 && (
-        <>
-          <div className="absolute inset-0 bg-[#060606]" />
-          <div className="relative z-10 flex items-center justify-center w-full h-full">
-            <motion.div 
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="absolute w-20 h-28 border border-neutral-800 bg-neutral-900/40 backdrop-blur-md -ml-12 -mt-8"
-            />
-            <motion.div 
-              initial={{ x: 20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="absolute w-24 h-32 border border-neutral-700 bg-black/60 backdrop-blur-md ml-8 mt-6"
-            />
+        <motion.div 
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="relative z-10 flex flex-col items-center gap-2"
+        >
+          {/* Retro Folder Shape */}
+          <div className="w-20 h-16 border-2 border-retro-border bg-retro-yellow shadow-retro-sm relative">
+            <div className="absolute -top-3 left-0 w-8 h-3 border-t-2 border-l-2 border-r-2 border-retro-border bg-retro-yellow" />
+            <div className="absolute top-2 left-2 w-12 h-2 bg-white border-2 border-retro-border opacity-50" />
+            <div className="absolute top-6 left-2 w-8 h-2 bg-white border-2 border-retro-border opacity-50" />
           </div>
-        </>
+          <span className="bg-retro-border text-white text-[10px] px-2 py-0.5 uppercase">file_{index}.sys</span>
+        </motion.div>
+      )}
+
+      {/* Variant 2: Terminal Output */}
+      {v === 2 && (
+        <motion.div 
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="w-32 h-32 border-2 border-retro-border bg-[#1A1A1A] p-2 flex flex-col gap-1 relative z-10 shadow-retro-sm"
+        >
+          <div className="w-full h-2 bg-[#333]" />
+          <div className="w-3/4 h-2 bg-retro-green mb-2" />
+          <div className="text-retro-green text-[8px]">{'>'} LOAD SYS</div>
+          <div className="text-retro-green text-[8px]">{'>'} RENDERING...</div>
+          <div className="flex gap-1 mt-auto">
+            <div className="w-2 h-2 bg-retro-green animate-blink" />
+          </div>
+        </motion.div>
+      )}
+
+      {/* Variant 3: Abstract Pixel Matrix */}
+      {v === 3 && (
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="relative z-10 w-24 h-24 grid grid-cols-4 grid-rows-4 gap-1 p-1 border-2 border-retro-border bg-retro-bg shadow-retro-sm"
+        >
+          {Array.from({ length: 16 }).map((_, i) => (
+            <motion.div 
+              key={i}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: i * 0.05 }}
+              className={`border border-retro-border ${i % 3 === 0 ? 'bg-retro-blue' : i % 5 === 0 ? 'bg-retro-red' : 'bg-white'}`}
+            />
+          ))}
+        </motion.div>
+      )}
+
+      {/* Variant 4: Error/Alert Dialog */}
+      {v === 4 && (
+        <motion.div 
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="relative z-10 w-40 border-2 border-retro-border bg-white shadow-retro flex flex-col"
+        >
+          <div className="bg-retro-border text-white text-[8px] px-1 py-0.5 flex justify-between">
+            <span>ALERT</span>
+            <span>x</span>
+          </div>
+          <div className="p-3 flex items-center gap-3">
+            <div className="w-6 h-6 border-2 border-retro-border bg-retro-red flex items-center justify-center text-white font-bold text-xs shrink-0 rounded-full">
+              !
+            </div>
+            <div className="flex flex-col gap-1 w-full">
+              <div className="w-full h-1.5 bg-retro-border" />
+              <div className="w-2/3 h-1.5 bg-retro-gray" />
+            </div>
+          </div>
+          <div className="p-2 border-t-2 border-retro-border flex justify-end bg-retro-bg">
+            <div className="border-2 border-retro-border px-2 py-0.5 text-[8px] bg-white text-retro-text font-bold">OK</div>
+          </div>
+        </motion.div>
       )}
 
       {/* Shared Overlay Labels */}
-      <div className="absolute inset-0 flex flex-col justify-between p-4 pointer-events-none z-20">
-        <span className="text-[9px] uppercase tracking-widest text-neutral-600 font-mono">
-          {index}
-        </span>
-        <span className="text-[9px] uppercase tracking-widest text-neutral-500 font-mono self-end bg-black/50 px-1 backdrop-blur-sm">
-          {label}
+      <div className="absolute bottom-2 left-2 pointer-events-none z-20">
+        <span className="text-[10px] uppercase tracking-widest text-retro-text font-bold bg-white px-1 border-2 border-retro-border shadow-retro-sm">
+          {label} {index}
         </span>
       </div>
       
