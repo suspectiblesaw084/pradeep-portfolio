@@ -309,7 +309,7 @@ function App() {
             <div className="grid-content">
               <h2 className="contact-heading">Have a project or an opportunity? Let's talk.</h2>
               <div className="hero-socials mt-lg">
-                <a href="mailto:hello@example.com" className="hover-link">Email</a>
+                <a href="mailto:pradeepvenu64@gmail.com" className="hover-link">Email</a>
                 <a href="https://www.linkedin.com/in/pradeep-v-172099342" target="_blank" rel="noopener noreferrer" className="hover-link">LinkedIn</a>
                 <a href="https://www.behance.net/20pc802pradeep" target="_blank" rel="noopener noreferrer" className="hover-link">Behance</a>
               </div>
