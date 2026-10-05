@@ -159,47 +159,83 @@ function SocialMediaMarquee({ projects, onSelectProject }) {
 
   return (
     <div className="social-marquee-section mt-lg fade-in">
-      {/* Row 1 - moves right continuously */}
+      {/* Row 1 - moves LEFT continuously */}
       <div className="marquee-row">
-        <div className="marquee-track marquee-track-right">
-          {row1.concat(row1).map((project, idx) => (
-            <div
-              key={`row1-${project.id}-${idx}`}
-              className="marquee-card"
-              onClick={() => onSelectProject(project)}
-            >
-              <img
-                src={project.thumbnail}
-                alt=""
-                loading="lazy"
-                className="marquee-thumb protected-image"
-                onContextMenu={(e) => e.preventDefault()}
-                onDragStart={(e) => e.preventDefault()}
-              />
-            </div>
-          ))}
+        <div className="marquee-track">
+          <div className="marquee-group marquee-group-left">
+            {row1.map((project, idx) => (
+              <div
+                key={`r1-a-${project.id}-${idx}`}
+                className="marquee-card"
+                onClick={() => onSelectProject(project)}
+              >
+                <img
+                  src={project.thumbnail}
+                  alt=""
+                  className="marquee-thumb protected-image"
+                  onContextMenu={(e) => e.preventDefault()}
+                  onDragStart={(e) => e.preventDefault()}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="marquee-group marquee-group-left" aria-hidden="true">
+            {row1.map((project, idx) => (
+              <div
+                key={`r1-b-${project.id}-${idx}`}
+                className="marquee-card"
+                onClick={() => onSelectProject(project)}
+              >
+                <img
+                  src={project.thumbnail}
+                  alt=""
+                  className="marquee-thumb protected-image"
+                  onContextMenu={(e) => e.preventDefault()}
+                  onDragStart={(e) => e.preventDefault()}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Row 2 - moves left continuously */}
+      {/* Row 2 - moves RIGHT continuously */}
       <div className="marquee-row mt-md">
-        <div className="marquee-track marquee-track-left">
-          {row2.concat(row2).map((project, idx) => (
-            <div
-              key={`row2-${project.id}-${idx}`}
-              className="marquee-card"
-              onClick={() => onSelectProject(project)}
-            >
-              <img
-                src={project.thumbnail}
-                alt=""
-                loading="lazy"
-                className="marquee-thumb protected-image"
-                onContextMenu={(e) => e.preventDefault()}
-                onDragStart={(e) => e.preventDefault()}
-              />
-            </div>
-          ))}
+        <div className="marquee-track">
+          <div className="marquee-group marquee-group-right">
+            {row2.map((project, idx) => (
+              <div
+                key={`r2-a-${project.id}-${idx}`}
+                className="marquee-card"
+                onClick={() => onSelectProject(project)}
+              >
+                <img
+                  src={project.thumbnail}
+                  alt=""
+                  className="marquee-thumb protected-image"
+                  onContextMenu={(e) => e.preventDefault()}
+                  onDragStart={(e) => e.preventDefault()}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="marquee-group marquee-group-right" aria-hidden="true">
+            {row2.map((project, idx) => (
+              <div
+                key={`r2-b-${project.id}-${idx}`}
+                className="marquee-card"
+                onClick={() => onSelectProject(project)}
+              >
+                <img
+                  src={project.thumbnail}
+                  alt=""
+                  className="marquee-thumb protected-image"
+                  onContextMenu={(e) => e.preventDefault()}
+                  onDragStart={(e) => e.preventDefault()}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

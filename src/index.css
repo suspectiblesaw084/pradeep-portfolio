@@ -366,46 +366,53 @@ button {
 .marquee-track {
   display: flex;
   width: max-content;
+  gap: 1.25rem;
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1.25rem;
+  align-items: center;
   will-change: transform;
 }
 
-/* Row 1 moves right */
-.marquee-track-right {
-  animation: marquee-move-right 95s linear infinite;
+/* Row 1 moves LEFT continuously at target ~120px/sec */
+.marquee-group-left {
+  animation: marquee-scroll-left 120s linear infinite;
 }
 
-/* Row 2 moves left */
-.marquee-track-left {
-  animation: marquee-move-left 95s linear infinite;
+/* Row 2 moves RIGHT continuously at target ~120px/sec */
+.marquee-group-right {
+  animation: marquee-scroll-right 120s linear infinite;
 }
 
 /* Hover pauses animation smoothly */
-.marquee-row:hover .marquee-track {
+.social-marquee-section:hover .marquee-group {
   animation-play-state: paused;
 }
 
-@keyframes marquee-move-right {
+@keyframes marquee-scroll-left {
   0% {
-    transform: translate3d(-50%, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(calc(-100% - 1.25rem), 0, 0);
   }
 }
 
-@keyframes marquee-move-left {
+@keyframes marquee-scroll-right {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(calc(-100% - 1.25rem), 0, 0);
   }
   100% {
-    transform: translate3d(-50%, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .marquee-card {
   flex: 0 0 auto;
   height: 280px;
-  margin-right: 1.25rem;
   background-color: #0a0a0a;
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 3px;
@@ -429,20 +436,43 @@ button {
 }
 
 @media (max-width: 768px) {
+  .marquee-track {
+    gap: 0.85rem;
+  }
+  .marquee-group {
+    gap: 0.85rem;
+  }
   .marquee-card {
     height: 200px;
-    margin-right: 0.85rem;
   }
-  .marquee-track-right {
-    animation-duration: 75s;
+  .marquee-group-left {
+    animation: marquee-scroll-left-mobile 100s linear infinite;
   }
-  .marquee-track-left {
-    animation-duration: 75s;
+  .marquee-group-right {
+    animation: marquee-scroll-right-mobile 100s linear infinite;
+  }
+}
+
+@keyframes marquee-scroll-left-mobile {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(calc(-100% - 0.85rem), 0, 0);
+  }
+}
+
+@keyframes marquee-scroll-right-mobile {
+  0% {
+    transform: translate3d(calc(-100% - 0.85rem), 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
+  .marquee-group {
     animation: none !important;
   }
   .marquee-row {
