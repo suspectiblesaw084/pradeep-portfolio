@@ -212,8 +212,23 @@ function App() {
                 }}
               >
                 <div className="project-thumb-wrapper glass-border">
-                  {project.type === 'pdf' ? (
+                  {project.type === 'pdf' && project.thumbnail === 'PDF' ? (
                     <div className="pdf-placeholder protected-image" onContextMenu={(e) => e.preventDefault()}>
+                      <div className="pdf-label-overlay">
+                        <FileText size={18} strokeWidth={1.5} className="pdf-small-icon" />
+                        <span className="pdf-label-text">{project.title}</span>
+                      </div>
+                    </div>
+                  ) : project.type === 'pdf' && project.thumbnail !== 'PDF' ? (
+                    <div className="pdf-placeholder protected-image" onContextMenu={(e) => e.preventDefault()}>
+                      <img 
+                        src={project.thumbnail} 
+                        alt="" 
+                        className="project-thumb protected-image" 
+                        loading="lazy" 
+                        onContextMenu={(e) => e.preventDefault()}
+                        onDragStart={(e) => e.preventDefault()}
+                      />
                       <div className="pdf-label-overlay">
                         <FileText size={18} strokeWidth={1.5} className="pdf-small-icon" />
                         <span className="pdf-label-text">{project.title}</span>

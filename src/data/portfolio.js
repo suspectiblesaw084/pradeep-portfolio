@@ -1,5 +1,6 @@
-// Import Brandbooks (PDFs)
+// Import Brandbooks (PDFs) and their placeholders
 const brandbookFiles = import.meta.glob('/public/brandbooks/*.pdf');
+const placeholderFiles = import.meta.glob('/public/brandbook-logo-placeholders/*.png');
 
 const autoBrandbooks = Object.keys(brandbookFiles).map((path, index) => {
   const publicPath = path.replace('/public', '');
@@ -8,13 +9,24 @@ const autoBrandbooks = Object.keys(brandbookFiles).map((path, index) => {
   const filenameMatch = path.match(/\/([^\/]+)\.pdf$/i);
   const baseFilename = filenameMatch ? filenameMatch[1] : `Brandbook ${index + 1}`;
 
+  // Find matching placeholder image by matching base filename
+  let matchedThumbnail = 'PDF';
+  const placeholderKeys = Object.keys(placeholderFiles);
+  for (const pKey of placeholderKeys) {
+    const pMatch = pKey.match(/\/([^\/]+)\.png$/i);
+    if (pMatch && pMatch[1] === baseFilename) {
+      matchedThumbnail = pKey.replace('/public', '');
+      break;
+    }
+  }
+
   return {
     id: `auto-brand-${index}`,
     title: baseFilename,
     category: 'Brand Identity & Brandbooks',
     year: '',
     description: '',
-    thumbnail: 'PDF',
+    thumbnail: matchedThumbnail,
     type: 'pdf',
     details: { pdfLink: publicPath }
   };
