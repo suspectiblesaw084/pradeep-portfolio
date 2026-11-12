@@ -790,3 +790,145 @@ body.modal-open {
   max-height: 90vh;
   object-fit: contain;
 }
+
+
+/* ==========================================================================
+   Logo Gallery — Premium Dark/Light Hover Swap
+   ========================================================================== */
+
+.logo-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+}
+
+@media (min-width: 768px) {
+  .logo-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .logo-gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.logo-card {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  aspect-ratio: 1 / 1;
+}
+
+/* Both faces share the same space, stacked */
+.logo-card__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20%;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  will-change: opacity, transform;
+}
+
+/* Default: dark face visible */
+.logo-card__face--dark {
+  background-color: #111111;
+  opacity: 1;
+}
+
+/* Default: light face hidden */
+.logo-card__face--light {
+  background-color: #F2F0EB;
+  opacity: 0;
+}
+
+/* Hover: swap faces (desktop) */
+@media (hover: hover) and (pointer: fine) {
+  .logo-card:hover .logo-card__face--dark {
+    opacity: 0;
+  }
+
+  .logo-card:hover .logo-card__face--light {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+
+  /* Label becomes dark text on light bg */
+  .logo-card:hover .logo-card__label,
+  .logo-card:hover .logo-card__brand {
+    color: #1A1A1A;
+  }
+
+  .logo-card:hover .logo-card__category {
+    color: #555555;
+  }
+}
+
+/* Mobile tap toggle via --active class */
+.logo-card--active .logo-card__face--dark {
+  opacity: 0;
+}
+
+.logo-card--active .logo-card__face--light {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.logo-card--active .logo-card__label,
+.logo-card--active .logo-card__brand {
+  color: #1A1A1A;
+}
+
+.logo-card--active .logo-card__category {
+  color: #555555;
+}
+
+/* Logo image sizing */
+.logo-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* Brand label strip */
+.logo-card__label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.85rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  z-index: 2;
+  pointer-events: none;
+  transition: color 300ms ease-in-out;
+}
+
+.logo-card__brand {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  transition: color 300ms ease-in-out;
+}
+
+.logo-card__category {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color 300ms ease-in-out;
+}
+
+/* Focus ring for accessibility */
+.logo-card:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: -2px;
+}

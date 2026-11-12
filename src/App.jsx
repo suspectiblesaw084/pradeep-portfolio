@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { projects } from './data/portfolio';
 import { X, FileText } from 'lucide-react';
 import clsx from 'clsx';
+import LogoGallery from './components/LogoGallery';
 
 // Atmospheric Smoke / Ink Cursor Trail (Canvas)
 function SmokeTrail() {
@@ -461,6 +462,10 @@ function App() {
               projects={filteredProjects}
               onSelectProject={setSelectedProject}
             />
+          ) : activeCategory === 'Logo Design' ? (
+            <div className="mt-lg">
+              <LogoGallery />
+            </div>
           ) : (
             <div className="masonry-grid mt-lg">
               {filteredProjects.map(project => (
