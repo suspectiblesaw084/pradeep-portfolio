@@ -1,14 +1,18 @@
 /**
- * Logo Design Projects — Curated Brand Collection
+ * Logo Design Projects — Centralized Three-State Logo Asset Mapping
  *
- * Each brand appears ONCE in the gallery, showing one curated logo.
- * White version displays on dark background (default).
- * Black version displays on hover (light background).
+ * State 1 (Default):       Dark card (#141311) + white monochrome logo
+ * State 2 (Card hover):    Pure white card (#FFFFFF) + complete black monochrome logo
+ * State 3 (Logo hover):    Pure white card (#FFFFFF) + coloured logo revealed inside
+ *                          a soft cursor-following circular spotlight over the black logo
  *
- * Asset location: public/assets/logos/
- * Note: Asset filenames indicate the intended card background color:
- *   - *-black.png contains the white/light logo artwork (for dark cards)
- *   - *-white.png contains the black/dark logo artwork (for light hover cards)
+ * Asset folders (consistent filenames across all three):
+ *   - public/logos/white/<slug>.png
+ *   - public/logos/black/<slug>.png
+ *   - public/logos/colored/<slug>.png
+ *
+ * Replacing any PNG in these folders with the same filename updates the gallery
+ * automatically without requiring code changes.
  */
 
 const logoProjects = [
@@ -16,50 +20,57 @@ const logoProjects = [
     id: 'logo-locally-groomed',
     brand: 'Locally Groomed',
     category: 'Apparel & Corporate Gifting',
-    white: '/assets/logos/locally-groomed-black.png',
-    black: '/assets/logos/locally-groomed-white.png',
+    white: '/logos/white/locally-groomed.png',
+    black: '/logos/black/locally-groomed.png',
+    colored: '/logos/colored/locally-groomed.png',
   },
   {
     id: 'logo-kovedaa',
     brand: 'Kovedaa',
     category: 'Corporate Identity',
-    white: '/assets/logos/kovedaa-black.png',
-    black: '/assets/logos/kovedaa-white.png',
+    white: '/logos/white/kovedaa.png',
+    black: '/logos/black/kovedaa.png',
+    colored: '/logos/colored/kovedaa.png',
   },
   {
     id: 'logo-aanya-hospital',
     brand: 'Aanya Hospital',
     category: 'Healthcare',
-    white: '/assets/logos/aanya-hospital-black.png',
-    black: '/assets/logos/aanya-hospital-white.png',
+    white: '/logos/white/aanya-hospital.png',
+    black: '/logos/black/aanya-hospital.png',
+    colored: '/logos/colored/aanya-hospital.png',
   },
   {
     id: 'logo-crime-stopper',
     brand: 'Crime Stopper',
     category: 'Security Services',
-    white: '/assets/logos/crime-stopper-black.png',
-    black: '/assets/logos/crime-stopper-white.png',
+    white: '/logos/white/crime-stopper.png',
+    black: '/logos/black/crime-stopper.png',
+    colored: '/logos/colored/crime-stopper.png',
   },
   {
     id: 'logo-nearby-studio',
     brand: 'Nearby Studio',
     category: 'Creative Studio',
-    white: '/assets/logos/nearby-studio-black.png',
-    black: '/assets/logos/nearby-studio-white.png',
+    white: '/logos/white/nearby-studio.png',
+    black: '/logos/black/nearby-studio.png',
+    colored: '/logos/colored/nearby-studio.png',
   },
   {
     id: 'logo-nkr-tv',
     brand: 'NKR TV',
     category: 'Broadcast Network',
-    white: '/assets/logos/nkr-tv-black.png',
-    black: '/assets/logos/nkr-tv-white.png',
+    white: '/logos/white/nkr-tv.png',
+    black: '/logos/black/nkr-tv.png',
+    colored: '/logos/colored/nkr-tv.png',
   },
   {
     id: 'logo-buzziwah',
     brand: 'Buzziwah',
     category: 'Digital Commerce',
-    white: '/assets/logos/buzziwah-black.png',
-    black: '/assets/logos/buzziwah-white.png',
+    white: '/logos/white/buzziwah.png',
+    black: '/logos/black/buzziwah.png',
+    colored: '/logos/colored/buzziwah.png',
   },
 ];
 

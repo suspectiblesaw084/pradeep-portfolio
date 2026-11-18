@@ -645,7 +645,7 @@ function App() {
                     <h3 className="work-block__title">Logo Design</h3>
                   </div>
                   <p className="work-block__note">
-                    Logo designs shown in white and black versions. Hover or tap any logo to switch.
+                    Monochrome logo designs. Move your cursor over any logo to reveal its coloured version.
                   </p>
                 </div>
 
@@ -653,11 +653,7 @@ function App() {
                   <div className="logo-exhibition__bar">
                     <span className="eyebrow">07 Logos</span>
                     <span className="logo-exhibition__hint">
-                      <span className="logo-exhibition__chips" aria-hidden="true">
-                        <span className="logo-chip-dark" />
-                        <span className="logo-chip-light" />
-                      </span>
-                      <span>Hover or tap to switch dark / light</span>
+                      <span>Hover over a logo to reveal colour</span>
                     </span>
                   </div>
                   <LogoGallery />
